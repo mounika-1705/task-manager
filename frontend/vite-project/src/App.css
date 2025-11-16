@@ -1,0 +1,65 @@
+body {
+  background-color: white;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 500px;
+  height: auto;
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0px 4px 10px rgba(121, 113, 115, 0.4);
+  text-align: center;
+  overflow: visible;
+}
+
+h1 {
+  color: black;
+  font-size: 45px;
+}
+
+.form input {
+  width: 80%;
+  padding: 12px;
+  border: 2px solid grey;
+  border-radius: 7px;
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+.form button {
+  background-color: blue;
+  color: white;
+  border: none;
+  padding: 17px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+}
+
+.task-list li {
+  background: rgba(231, 234, 235, 0.781);
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 10px;
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+}
+
+.task-list button {
+  background-color: rgb(228, 43, 43);
+  padding: 6px;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
