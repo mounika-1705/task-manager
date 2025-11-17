@@ -7,7 +7,7 @@ app = FastAPI()
 origins = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
-    "https://frontend-site-3r3h.onrender.com", 
+    "https://frontend-site-3r3h.onrender.com",  
 ]
 
 app.add_middleware(
@@ -18,7 +18,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Root endpoint 
+# Root endpoint
 @app.get("/")
 def root():
     return {"status": "ok"}
