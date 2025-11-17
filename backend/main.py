@@ -17,6 +17,11 @@ app.add_middleware(
     allow_headers=["*"],   # allow all headers
 )
 
+# ➤ Root endpoint (this is what we added)
+@app.get("/")
+def root():
+    return {"status": "ok"}
+
 # Models
 class TaskCreate(BaseModel):
     title: str
@@ -29,7 +34,7 @@ class Task(BaseModel):
 tasks = []
 current_id = 1
 
-#CREATE
+# CREATE
 @app.post("/tasks")
 def create_task(new_task: TaskCreate):
     global current_id
@@ -38,12 +43,12 @@ def create_task(new_task: TaskCreate):
     current_id += 1
     return task
 
-#GET
+# GET
 @app.get("/tasks")
 def get_tasks():
     return tasks
 
-#UPDATE
+# UPDATE
 @app.put("/tasks/{task_id}")
 def update_task(task_id: int, updated_data: TaskCreate):
     for i, task in enumerate(tasks):
@@ -52,7 +57,7 @@ def update_task(task_id: int, updated_data: TaskCreate):
             return tasks[i]
     raise HTTPException(status_code=404, detail="Task not found")
 
-#DELETE
+# DELETE
 @app.delete("/tasks/{task_id}")
 def delete_task(task_id: int):
     for i, task in enumerate(tasks):
