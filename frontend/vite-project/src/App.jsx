@@ -8,7 +8,7 @@ const App = () => {
 
   // Fetch all tasks from backend
   const fetchTasks = () => {
-    fetch(`${import.meta.env.VITE_API_URL}`/tasks)
+    fetch(`${import.meta.env.VITE_API_URL}/tasks`)
       .then((res) => res.json())
       .then((data) => setTasks(data))
       .catch((err) => console.log("Error fetching tasks:", err));
@@ -21,7 +21,7 @@ const App = () => {
 
   // Add new task
   const addTask = (task) => {
-    fetch(`${import.meta.env.VITE_API_URL}`/tasks, {
+    fetch(`${import.meta.env.VITE_API_URL}/tasks`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(task),
