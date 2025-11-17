@@ -6,36 +6,38 @@ import "./App.css";
 const App = () => {
   const [tasks, setTasks] = useState([]);
 
-  //fetch all tasks from backend
+  // Fetch all tasks from backend
   const fetchTasks = () => {
-    fetch("http://127.0.0.1:8000/tasks")
+    fetch(`${import.meta.env.VITE_API_URL}`/tasks)
       .then((res) => res.json())
       .then((data) => setTasks(data))
       .catch((err) => console.log("Error fetching tasks:", err));
   };
 
-  // Fetch tasks
+  // Load tasks on page load
   useEffect(() => {
     fetchTasks();
   }, []);
 
-  // Adding tasks
+  // Add new task
   const addTask = (task) => {
-    fetch("http://127.0.0.1:8000/tasks", {
+    fetch(`${import.meta.env.VITE_API_URL}`/tasks, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(task),
     })
       .then((res) => res.json())
       .then(() => {
-        fetchTasks(); 
+        fetchTasks();
       })
       .catch((err) => console.log("Add task error:", err));
   };
 
   // Delete task
   const deleteTask = (id) => {
-    fetch(`http://127.0.0.1:8000/tasks/${id}`, { method: "DELETE" })
+    fetch(`${import.meta.env.VITE_API_URL}/tasks/${id}`, {
+      method: "DELETE",
+    })
       .then(() => {
         setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
       })
