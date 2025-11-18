@@ -3,12 +3,14 @@ import TaskForm from "./components/TaskForm";
 import TaskList from "./components/TaskList";
 import "./App.css";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const App = () => {
   const [tasks, setTasks] = useState([]);
 
   //fetch tasks from backend
   const fetchTasks = () => {
-    fetch("http://127.0.0.1:8000/tasks")
+    fetch(`${API_URL}/tasks`)
       .then((res) => res.json())
       .then((data) => setTasks(data))
       .catch((err) => console.log("Error fetching tasks:", err));
@@ -21,7 +23,7 @@ const App = () => {
 
   //Adding tasks
   const addTask = (task) => {
-    fetch("http://127.0.0.1:8000/tasks", {
+    fetch(`${API_URL}/tasks`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(task),
@@ -35,7 +37,7 @@ const App = () => {
 
   //Delete task
   const deleteTask = (id) => {
-    fetch(`http://127.0.0.1:8000/tasks/${id}`, { method: "DELETE" })
+    fetch(`${API_URL}/tasks/${id}`, { method: "DELETE" })
       .then(() => {
         setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
       })
